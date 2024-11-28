@@ -5,7 +5,7 @@ import { sql } from "@vercel/postgres";
 import { AuthError } from "next-auth";
 import { expirePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { custom, z } from "zod";
+import { z } from "zod";
 
 const FormSchema = z.object({
   id: z.string(),
@@ -70,6 +70,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   INSERT INTO invoices (customer_id, amount, status, date)
   VALUES (${customerId}, ${amointInCents}, ${status}, ${date})`;
   } catch (error) {
+    console.error(error);
     return {
       message:
         "An error occurred while creating the invoice. Please try again.",
@@ -111,6 +112,7 @@ export async function updateInvoice(
     WHERE id = ${id}
   `;
   } catch (error) {
+    console.error(error);
     return {
       message:
         "An error occurred while updating the invoice. Please try again.",
@@ -125,6 +127,7 @@ export async function deleteInvoice(id: string) {
   try {
     await sql`DELETE FROM invoices WHERE id = ${id}`;
   } catch (error) {
+    console.error(error);
     return {
       message:
         "An error occurred while deleting the invoice. Please try again.",

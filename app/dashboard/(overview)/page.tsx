@@ -1,5 +1,4 @@
-import { fetchCardData, fetchLatestInvoices } from "../../lib/data";
-import CardWrapper, { Card } from "../../ui/dashboard/cards";
+import CardWrapper from "../../ui/dashboard/cards";
 import LatestInvoices from "../../ui/dashboard/latest-invoices";
 import RevenueChart from "../../ui/dashboard/revenue-chart";
 import { lusitana } from "../../ui/fonts";
@@ -7,7 +6,7 @@ import { Suspense } from "react";
 import { CardsSkeleton, LatestInvoicesSkeleton, RevenueChartSkeleton } from "@/app/ui/skeletons";
 
 export default async function Page() {
-  const { numberOfCustomers, numberOfInvoices, totalPaidInvoices, totalPendingInvoices } = await fetchCardData()
+  // const { numberOfCustomers, numberOfInvoices, totalPaidInvoices, totalPendingInvoices } = await fetchCardData()
 
   // const revenue = await fetchRevenue()
   // const latestInvoices = await fetchLatestInvoices()
